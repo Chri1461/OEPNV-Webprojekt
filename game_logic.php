@@ -9,7 +9,14 @@
     // Datenbank Login-Daten und Verbindungsaufbau
     include("database_login.php");
     $connection = mysqli_connect($host, $user, $password, $database);
-    $selected_transport = ['sbahn_berlin', 'underground_berlin'];
+    $city = "berlin";
+    $selected_transport = [];
+    if (!isset($_SESSION["Networks"])) {
+        $_SESSION["Networks"] = ["cityline"];
+    }
+    foreach($_SESSION["Networks"] as $i) {
+        $selected_transport[] = "{$i}_{$city}";
+    }
 
     $sub_queries = [];
     foreach($selected_transport as $i) {

@@ -5,12 +5,69 @@ const input_field = document.getElementById("station_input");
 const out = document.getElementById("out");
 const next = document.getElementById("next_round");
 const suggest_div = document.getElementById("suggest");
+const settings = document.getElementById("settings");
+const overlay_container = document.getElementById("overlay_container");
 
 input_field.addEventListener("input", suggest);
-suggest_div.addEventListener("mousedown", use_input)
-next.addEventListener("mousedown", reset_html)
+suggest_div.addEventListener("mousedown", use_input);
+next.addEventListener("mousedown", reset_html);
+settings.addEventListener("click", open_settings);
+overlay_container.addEventListener("click", close_settings);
 
 let html_content = "";
+async function open_settings() {
+    try {
+        const resp = await fetch("change_settings.php", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({Request: "All"})
+        });
+
+        const data = await resp.json();
+        data.networks.forEach(element => {
+           var checkbox = document.getElementById(element);
+           checkbox.checked = true; 
+        });
+    } catch (e) {}
+
+    overlay_container.style.display = "block"; 
+    const overlay = document.getElementById("overlay");
+    overlay.addEventListener("change", change_settings);
+}
+
+function close_settings(event) {
+    if (event.target.id == "overlay_container") {        
+        overlay_container.style.display = "none";  
+    }
+}
+
+async function change_settings(event) {
+    var amount = document.querySelectorAll('input[type="checkbox"]:checked').length;
+    if (amount == 0) {
+        event.target.checked = true;
+        return;
+    }
+
+    if (event.target.type === "checkbox") {
+        if (event.target.id === "cityline") {
+            var sent_body = JSON.stringify({cityline: event.target.checked});
+        } else if (event.target.id === "underground") {
+            var sent_body = JSON.stringify({underground: event.target.checked});
+        }
+
+        try {
+            const resp = await fetch("change_settings.php", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: sent_body
+            });
+            get_stations();
+            reset_html();
+
+        } catch (e) {}
+    }
+}
+
 async function use_input(event) {
     if (event.target.id != "suggestion") {return -1;} // Verhindert, dass Klick auf <DIV> einen Fehler gibt, da nur Inhalt eines <p> erwartet wird
 
@@ -94,5 +151,6 @@ function reset_html() {
     suggest_div.innerHTML = "";
     next.innerHTML = "";
     input_field.removeAttribute("disabled");
+    input_field.value = "";
 }
 });

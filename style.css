@@ -8,7 +8,43 @@
     color: red;
 }
 
-#suggestion:hover{
+#suggestion:hover {
     color: darkblue;
     text-decoration: underline;
 } 
+
+#settings:hover {
+    color: darkblue;
+    text-decoration: underline;
+}
+
+#overlay_container {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 2;
+    cursor: pointer;
+}
+
+#overlay {
+    color: white;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -35%);
+    z-index: 3;
+}
+
+#warning {
+    color: red;
+}
+
+body {
+    text-align: center;
+}

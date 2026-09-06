@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `sbahn_berlin`
+-- Tabellenstruktur für Tabelle `cityline_berlin`
 --
 
-CREATE TABLE `sbahn_berlin` (
+CREATE TABLE `cityline_berlin` (
   `Station` varchar(100) NOT NULL,
   `Linie` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `Bezirk` varchar(50) NOT NULL,
@@ -37,10 +37,10 @@ CREATE TABLE `sbahn_berlin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Daten für Tabelle `sbahn_berlin`
+-- Daten für Tabelle `cityline_berlin`
 --
 
-INSERT INTO `sbahn_berlin` (`Station`, `Linie`, `Bezirk`, `Ersteröffnung`, `Latitude`, `Longitude`) VALUES
+INSERT INTO `cityline_berlin` (`Station`, `Linie`, `Bezirk`, `Ersteröffnung`, `Latitude`, `Longitude`) VALUES
 ('Adlershof', 'S46, S8, S85, S9', 'Treptow-Köpenick', NULL, 52.43557850473056, 13.540296366709775),
 ('Ahrensfelde', 'S7', 'Marzahn-Hellersdorf', NULL, 52.57134444416543, 13.565706608614976),
 ('Alexanderplatz', 'S3, S5, S7, S9', 'Mitte', NULL, 52.521508166110344, 13.411248100435284),

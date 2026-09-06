@@ -1,11 +1,20 @@
 <?php
+    session_start();
+
     header('Content-Type: application/json');
     $incoming_data = file_get_contents("php://input");
     $data = json_decode($incoming_data, true);
 
     include("database_login.php");
     $connection = mysqli_connect($host, $user, $password, $database);
-    $selected_transport = ['sbahn_berlin', 'underground_berlin'];
+    $city = "berlin";
+    $selected_transport = [];
+    if (!isset($_SESSION["Networks"])) {
+        $_SESSION["Networks"] = ["cityline"];
+    }
+    foreach($_SESSION["Networks"] as $i) {
+        $selected_transport[] = "{$i}_{$city}";
+    }
 
     $sub_queries = [];
     foreach($selected_transport as $i) {
