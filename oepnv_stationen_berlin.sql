@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 02. Sep 2026 um 14:22
+-- Erstellungszeit: 08. Sep 2026 um 01:33
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -213,6 +213,21 @@ INSERT INTO `cityline_berlin` (`Station`, `Linie`, `Bezirk`, `Ersteröffnung`, `
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `games`
+--
+
+CREATE TABLE `games` (
+  `gid` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `mode` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`mode`)),
+  `guesses` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`guesses`)),
+  `guess_count` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `underground_berlin`
 --
 
@@ -406,6 +421,18 @@ INSERT INTO `underground_berlin` (`Station`, `Linie`, `Bezirk`, `Ersteröffnung`
 ('Zoologischer Garten', 'U2, U9', 'Charlottenburg-Wilmersdorf', '1902-03-11', 52.50734226016486, 13.332459919079213),
 ('Zwickauer Damm', 'U7', 'Neukölln', '1970-01-02', 52.42324530229916, 13.48364947154456);
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `user`
+--
+
+CREATE TABLE `user` (
+  `uid` int(11) NOT NULL,
+  `created` date NOT NULL,
+  `gsc` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT 'guessed_stations_counted' CHECK (json_valid(`gsc`))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indizes der exportierten Tabellen
 --
@@ -417,10 +444,39 @@ ALTER TABLE `cityline_berlin`
   ADD PRIMARY KEY (`Station`);
 
 --
+-- Indizes für die Tabelle `games`
+--
+ALTER TABLE `games`
+  ADD PRIMARY KEY (`gid`);
+
+--
 -- Indizes für die Tabelle `underground_berlin`
 --
 ALTER TABLE `underground_berlin`
   ADD PRIMARY KEY (`Station`);
+
+--
+-- Indizes für die Tabelle `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`uid`),
+  ADD KEY `gsc` (`gsc`(768));
+
+--
+-- AUTO_INCREMENT für exportierte Tabellen
+--
+
+--
+-- AUTO_INCREMENT für Tabelle `games`
+--
+ALTER TABLE `games`
+  MODIFY `gid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+--
+-- AUTO_INCREMENT für Tabelle `user`
+--
+ALTER TABLE `user`
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

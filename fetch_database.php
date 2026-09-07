@@ -5,7 +5,8 @@
     $incoming_data = file_get_contents("php://input");
     $data = json_decode($incoming_data, true);
 
-    include("database_login.php");
+    // Datenbank Verbindungsaufbau
+    include("database-login.php");
     $connection = mysqli_connect($host, $user, $password, $database);
     $city = "berlin";
     $selected_transport = [];

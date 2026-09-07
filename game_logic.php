@@ -2,12 +2,13 @@
     session_start();
 
     // Daten vom Java-Script entgegennehmen und verarbeiten
+    include("safe_user_data.php");
     header('Content-Type: application/json');
     $incoming_data = file_get_contents("php://input");
     $data_guess = json_decode($incoming_data, true);
 
-    // Datenbank Login-Daten und Verbindungsaufbau
-    include("database_login.php");
+    // Datenbank Verbindungsaufbau
+    include("database-login.php");
     $connection = mysqli_connect($host, $user, $password, $database);
     $city = "berlin";
     $selected_transport = [];
@@ -46,6 +47,7 @@
             $_SESSION["guessed_stations"][] = $data_guess["Station"];
             $_SESSION["guess_count"] += 1;
             if ($ziel_row["Station"] == $data_guess["Station"]) { // Richtige Station vom Nutzer erraten
+                safe_game();
                 $_SESSION["ziel_data"] = NULL; // Ziel-Station zurücksetzen
                 $_SESSION["guessed_stations"] = [];
                 $_SESSION["guess_count"] = 0;

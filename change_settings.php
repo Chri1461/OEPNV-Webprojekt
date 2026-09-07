@@ -23,6 +23,8 @@
             } 
             $_SESSION["Networks"] = $networks;
             unset($_SESSION["ziel_data"]);
+            $_SESSION["guessed_stations"] = [];
+            $_SESSION["guess_count"] = 0;
         }
     }
 ?>
