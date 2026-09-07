@@ -34,15 +34,23 @@
         $result = mysqli_query($connection, $sql);
         $ziel_row = mysqli_fetch_assoc($result);
         $_SESSION["ziel_data"] = $ziel_row;
+        $_SESSION["guessed_stations"] = [];
+        $_SESSION["guess_count"] = 0;
     } else {
         $ziel_row = $_SESSION["ziel_data"];
     }
 
     // Guess von Nutzer entgegennehmen
     if ($data_guess && isset($data_guess["Station"])) {
-        if ($ziel_row["Station"] == $data_guess["Station"]) { // Richtige Station vom Nutzer erraten
-            $_SESSION["ziel_data"] = NULL; // Ziel-Station zurücksetzen
-        }
+        if (!in_array($data_guess["Station"], $_SESSION["guessed_stations"])) {
+            $_SESSION["guessed_stations"][] = $data_guess["Station"];
+            $_SESSION["guess_count"] += 1;
+            if ($ziel_row["Station"] == $data_guess["Station"]) { // Richtige Station vom Nutzer erraten
+                $_SESSION["ziel_data"] = NULL; // Ziel-Station zurücksetzen
+                $_SESSION["guessed_stations"] = [];
+                $_SESSION["guess_count"] = 0;
+            }
+        }   
     } else {
         http_response_code(400);
         $data_to_send = [

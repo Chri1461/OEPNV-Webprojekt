@@ -7,10 +7,6 @@
         <script src="use_input.js"></script>
     </head>
     <body>
-        <p style="text-align: right"><span id="settings">Einstellungen</span></p>
-        <h1>Im Aufbau</h1>
-        
-        <div id="suggest"></div>
         <div id="overlay_container">
             <div id="overlay">
                 <h1 id="warning">ACHTUNG!</h1>
@@ -26,7 +22,12 @@
             </div>
         </div>
 
-        <input id="station_input" type="text" name="stationname" spellcheck="false" value="" required>
+        <p style="text-align: right"><span id="settings">Einstellungen</span></p>
+        <h1>Errate die Station!</h1>
+        
+        <div id="suggest"></div>
+
+        <input id="station_input" type="text" name="stationname" placeholder="Station eingeben" spellcheck="false" value="" required>
         <br>
 
         <div id="out"></div>

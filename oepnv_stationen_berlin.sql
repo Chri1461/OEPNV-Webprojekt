@@ -411,9 +411,9 @@ INSERT INTO `underground_berlin` (`Station`, `Linie`, `Bezirk`, `Ersteröffnung`
 --
 
 --
--- Indizes für die Tabelle `sbahn_berlin`
+-- Indizes für die Tabelle `cityline_berlin`
 --
-ALTER TABLE `sbahn_berlin`
+ALTER TABLE `cityline_berlin`
   ADD PRIMARY KEY (`Station`);
 
 --

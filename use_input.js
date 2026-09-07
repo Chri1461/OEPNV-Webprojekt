@@ -68,10 +68,13 @@ async function change_settings(event) {
     }
 }
 
-async function use_input(event) {
-    if (event.target.id != "suggestion") {return -1;} // Verhindert, dass Klick auf <DIV> einen Fehler gibt, da nur Inhalt eines <p> erwartet wird
+async function use_input(event, s="") {
+    let station;
+    if (event) {
+        if (event.target.id != "suggestion") {return -1;} // Verhindert, dass Klick auf <DIV> einen Fehler gibt, da nur Inhalt eines <p> erwartet wird
+        station = event.target.textContent.replace(" " + count_only_letters(event.target.textContent), "");
+    } else {station = s;}
 
-    let station = event.target.textContent.replace(" " + count_only_letters(event.target.textContent), "");
     input_field.value = "";
     suggest_div.innerHTML = "";
     try {
@@ -123,6 +126,28 @@ async function get_stations() {
 
         const data = await resp.json();
         stationsliste = data;
+
+        get_last_game();
+
+    } catch (e) {}
+}
+
+async function get_last_game() {
+    try {
+        const resp = await fetch("request_last_game.php", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({Request: "All"})
+        });
+
+        if (!resp.ok) {
+            throw new Error(`Netzwerkfehler: ${resp.status}`);
+        }
+
+        const data = await resp.json();
+        for (const element of data.stations) {
+            await use_input(false, s=element);
+        }
 
     } catch (e) {}
 }
