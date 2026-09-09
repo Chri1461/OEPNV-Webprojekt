@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 08. Sep 2026 um 01:33
+-- Erstellungszeit: 09. Sep 2026 um 22:30
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -219,6 +219,8 @@ INSERT INTO `cityline_berlin` (`Station`, `Linie`, `Bezirk`, `Ersteröffnung`, `
 CREATE TABLE `games` (
   `gid` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL,
   `city` varchar(50) NOT NULL,
   `mode` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`mode`)),
   `guesses` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`guesses`)),

@@ -49,14 +49,16 @@
                 $uid = $decryptedData;
             } else {throw new Error("Hmm");}
         }
-
+        
+        $date = date("Y-d-m", time());
+        $time = date("H:i:s", time());
         $city = "berlin";
         $gamemode = json_encode($_SESSION["Networks"], JSON_UNESCAPED_UNICODE);
         $guesses = json_encode($_SESSION["guessed_stations"], JSON_UNESCAPED_UNICODE);
         $guess_count = $_SESSION["guess_count"];
 
         $sql = "INSERT INTO games
-                VALUES(NULL, $uid, '$city', '$gamemode', '$guesses', $guess_count)";
+                VALUES(NULL, $uid, '$date', '$time', '$city', '$gamemode', '$guesses', $guess_count)";
         mysqli_query($connection, $sql);
 
         mysqli_close($connection);
