@@ -99,7 +99,11 @@ async function use_input(event, s="") {
                 next.innerHTML = "<p id=suggestion>Nächste Runde</p>";
                 input_field.setAttribute("disabled", "disabled");
             }
-            html_content += "<p id=" + data.correct_lines + ">" + data.lines + "</p>";
+            html_content += "<div id=" + data.correct_lines + ">";
+            data.lines.split(", ").forEach(line => {
+                html_content += "<img id='icon' src=Icons/" + line + ".svg>";
+            });
+            html_content += "</div>";
             html_content += "<p id=" + data.correct_district + ">" + data.district + "</p>";
             html_content += "<p id='" + data.correct_len + "'> Anzahl Buchstaben: <i>" + count_only_letters(data.guess) + "</i></p></div>";
 

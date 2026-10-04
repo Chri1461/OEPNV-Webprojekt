@@ -2,11 +2,11 @@
     function safe_game() {
         include("database-login.php");
         $connection = mysqli_connect($host, $user, $password, $database);
+        date_default_timezone_set('Europe/Berlin');
 
         if (!isset($_COOKIE["uid"])) {
             $test = json_encode(["Hallo" => 0], JSON_UNESCAPED_UNICODE);
 
-            date_default_timezone_set('Europe/Berlin');
             $date = date("Y-d-m", time());
             mysqli_query($connection, "INSERT INTO user VALUES(NULL, '$date', '$test')");
             $uid = mysqli_insert_id($connection);   

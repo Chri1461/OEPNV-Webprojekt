@@ -1,17 +1,23 @@
 #Green {
-    color: green;
+    background-color: hsl(120, 100%, 25%, 0.25);
 }
 #Yellow {
-    color: darkorange;
+    background-color: hsl(33, 100%, 50%, 0.25);
 }
 #Red {
-    color: red;
+    background-color: hsl(0, 100%, 50%, 0.25);
 }
 
 #suggestion:hover {
     color: darkblue;
     text-decoration: underline;
 } 
+
+#icon {
+    transform: translate(0, 10%);
+    height: 1em;
+    padding: 0.15%;
+}
 
 #settings:hover {
     color: darkblue;
