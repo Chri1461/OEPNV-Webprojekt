@@ -49,7 +49,9 @@ async function change_settings(event) {
     }
 
     if (event.target.type === "checkbox") {
-        if (event.target.id === "cityline") {
+        if (event.target.id === "regio") {
+            var sent_body = JSON.stringify({regio: event.target.checked});
+        } else if (event.target.id === "cityline") {
             var sent_body = JSON.stringify({cityline: event.target.checked});
         } else if (event.target.id === "underground") {
             var sent_body = JSON.stringify({underground: event.target.checked});
@@ -100,7 +102,12 @@ async function use_input(event, s="") {
                 input_field.setAttribute("disabled", "disabled");
             }
             html_content += "<div id=" + data.correct_lines + ">";
+            let last_network = data.lines[0];
             data.lines.split(", ").forEach(line => {
+                if (last_network != line[0]) {
+                    html_content += "<br>";
+                    last_network = line[0];
+                };
                 html_content += "<img id='icon' src=Icons/" + line + ".svg>";
             });
             html_content += "</div>";

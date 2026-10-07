@@ -27,7 +27,7 @@
 
     // Random Ziel-Station generieren oder gespeicherte aus Session-Cookies lesen
     if (!isset($_SESSION["ziel_data"])) {
-        $sql = "SELECT Station, GROUP_CONCAT(Linie SEPARATOR ', ') AS Linie, Bezirk, Ersteröffnung, Latitude, Longitude
+        $sql = "SELECT Station, GROUP_CONCAT(Linie SEPARATOR ', ') AS Linie, Bezirk, Latitude, Longitude
                 FROM ($union) AS Vereinigung
                 GROUP BY Station
                 ORDER BY RAND() 
@@ -63,7 +63,7 @@
     
     // Informationen zum Guess abfragen
     $guessed_name = $data_guess["Station"];
-    $sql = "SELECT Station, GROUP_CONCAT(Linie SEPARATOR ', ') AS Linie, Bezirk, Ersteröffnung, Latitude, Longitude
+    $sql = "SELECT Station, GROUP_CONCAT(Linie SEPARATOR ', ') AS Linie, Bezirk, Latitude, Longitude
             FROM ($union) AS Vereinigung
             WHERE Station = '$guessed_name'
             GROUP BY Station
