@@ -1,6 +1,11 @@
-<svg data-name="RV Nr." viewBox="0 0 68.03 34.02" xmlns="http://www.w3.org/2000/svg">
-    <path style="fill:#da6ba2" d="M0 0h68.03v34.02H0z"/>
-    <path d="m14.52 27.31-1.85-6.4c-.53-1.83-1.31-2.28-2.66-2.28h-.7v8.68H5.44V6.71h6.42c4.51 0 5.89 2.59 5.89 5.46A4.64 4.64 0 0 1 13.93 17v.09c1.16.29 1.77.89 2.39 2.89l2.27 7.35ZM10.91 9.75H9.2v5.81h1.74a2.73 2.73 0 0 0 2.88-2.89 2.65 2.65 0 0 0-2.91-2.92Z" style="fill:#fff"/>
-    <path d="M21.78 27.275V6.8h11.059v3.139h-7.07v5.221h6.718v3.139h-6.718v5.837h7.451v3.139z" style="font-weight:700;font-size:29.3333px;font-family:TransitWeb-BoldW03-Regular;-inkscape-font-specification:'TransitWeb-BoldW03-Regular, Bold';fill:#fff;stroke-linejoin:bevel;paint-order:stroke fill markers" aria-label="E"/>
-    <path d="M41.627 27.275V11.288l-2.64 2.757-1.907-2.816L42.301 6.8h3.256v20.475ZM54.047 27.275V11.288l-2.64 2.757L49.5 11.23 54.721 6.8h3.256v20.475z" style="font-weight:700;font-size:29.3333px;font-family:TransitWeb-BoldW03-Regular;-inkscape-font-specification:'TransitWeb-BoldW03-Regular, Bold';fill:#fff;stroke-linejoin:bevel;paint-order:stroke fill markers" aria-label="1"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="RV_Nr." data-name="RV Nr." viewBox="0 0 68.03 34.02">
+  <defs>
+    <style>.cls-1{fill:#da6ba2;}.cls-2{fill:#fff;}</style>
+  </defs>
+  <rect class="cls-1" width="68.03" height="34.02"></rect>
+  <path class="cls-2" d="M16.82,27.38l-2-6.43c-.57-1.84-1.4-2.29-2.82-2.29h-.74v8.72H7.22V6.69H14c4.77,0,6.22,2.6,6.22,5.48a4.72,4.72,0,0,1-4,4.83v.09c1.22.3,1.87.89,2.52,2.91l2.4,7.38ZM13,9.74H11.19v5.84H13a2.82,2.82,0,0,0,3-2.91A2.74,2.74,0,0,0,13,9.74Z"></path>
+  <path class="cls-2" d="M24.5,27.38V6.69H35.68V9.86H28.53v5.28h6.79v3.17H28.53v5.9h7.53v3.17Z"></path>
+  <path class="cls-2" d="M44,27.38V11.22L41.31,14l-1.93-2.85,5.28-4.47H48V27.38Z"></path>
+  <path class="cls-2" d="M55.66,27.38V11.22L53,14l-1.93-2.85,5.28-4.47h3.29V27.38Z"></path>
 </svg>

@@ -1,7 +1,11 @@
-<svg data-name="RV Nr." viewBox="0 0 68.03 34.02" xmlns="http://www.w3.org/2000/svg">
-    <path style="fill:#ffd502" d="M0 0h68.03v34.02H0z"/>
-    <path d="m14.52 27.31-1.85-6.4c-.53-1.83-1.31-2.28-2.66-2.28h-.7v8.68H5.44V6.71h6.42c4.51 0 5.89 2.59 5.89 5.46A4.64 4.64 0 0 1 13.93 17v.09c1.16.29 1.77.89 2.39 2.89l2.27 7.35ZM10.91 9.75H9.2v5.81h1.74a2.73 2.73 0 0 0 2.88-2.89 2.65 2.65 0 0 0-2.91-2.92Z" style="fill:#000;fill-opacity:1"/>
-    <path d="M21.78 27.275V6.8h11.059v3.139h-7.07v5.221h6.718v3.139h-6.718v5.837h7.451v3.139z" style="font-weight:700;font-size:29.3333px;font-family:TransitWeb-BoldW03-Regular;-inkscape-font-specification:'TransitWeb-BoldW03-Regular, Bold';fill:#000;stroke-linejoin:bevel;paint-order:stroke fill markers;fill-opacity:1" aria-label="E"/>
-    <path d="M41.627 27.275V11.288l-2.64 2.757-1.907-2.816L42.301 6.8h3.256v20.475Z" style="font-weight:700;font-size:29.3333px;font-family:TransitWeb-BoldW03-Regular;-inkscape-font-specification:'TransitWeb-BoldW03-Regular, Bold';fill:#000;stroke-linejoin:bevel;paint-order:stroke fill markers;fill-opacity:1" aria-label="1"/>
-    <path d="M61.41 20.323q0 1.76-.529 3.109-.528 1.35-1.496 2.288-.968.91-2.317 1.379-1.35.469-2.992.469-1.584 0-2.67-.293-1.085-.294-1.906-.616l.176-3.198q.616.323 1.613.675 1.027.323 2.171.323 1.79 0 2.787-1.086 1.026-1.085 1.026-2.757 0-1.936-1.202-2.816-1.174-.91-3.022-.91-.968 0-1.73.206-.734.176-1.496.41V6.8H60.44v2.963h-7.098v4.546q.41-.117.968-.176.557-.088 1.144-.088 1.261 0 2.346.44 1.115.411 1.907 1.232.792.822 1.232 1.995.47 1.144.47 2.61z" style="font-weight:700;font-size:29.3333px;font-family:TransitWeb-BoldW03-Regular;-inkscape-font-specification:'TransitWeb-BoldW03-Regular, Bold';fill:#000;stroke-linejoin:bevel;paint-order:stroke fill markers;fill-opacity:1" aria-label="5"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="RV_Nr." data-name="RV Nr." viewBox="0 0 68.03 34.02">
+  <defs>
+    <style>.cls-1{fill:#ffd502;}</style>
+  </defs>
+  <rect class="cls-1" width="68.03" height="34.01"></rect>
+  <path d="M15,27.16l-1.95-6.4c-.56-1.83-1.38-2.27-2.8-2.27H9.53v8.67H5.45V6.56h6.76c4.76,0,6.2,2.6,6.2,5.46a4.7,4.7,0,0,1-4,4.81v.09c1.21.3,1.86.89,2.51,2.89l2.39,7.35ZM11.21,9.6H9.41v5.82h1.83a2.81,2.81,0,0,0,3-2.9C14.28,10.66,13.16,9.6,11.21,9.6Z"></path>
+  <path d="M22.65,27.16V6.56H33.79V9.72H26.67V15h6.76v3.16H26.67V24h7.5v3.16Z"></path>
+  <path d="M42,27.16V11.08l-2.66,2.77L37.47,11l5.25-4.46H46v20.6Z"></path>
+  <path d="M55.2,27.46a11.49,11.49,0,0,1-4.61-.92l.18-3.21a8.55,8.55,0,0,0,3.81,1,3.63,3.63,0,0,0,3.84-3.87c0-2.56-1.78-3.75-4.25-3.75a9.63,9.63,0,0,0-3.25.63V6.56H61.6v3H54.46v4.58a8.38,8.38,0,0,1,2.13-.27c3.42,0,6,2.39,6,6.32C62.58,24.86,59.6,27.46,55.2,27.46Z"></path>
 </svg>

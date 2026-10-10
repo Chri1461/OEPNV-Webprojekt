@@ -1,6 +1,10 @@
-<svg data-name="RV Nr." viewBox="0 0 68.03 34.02" xmlns="http://www.w3.org/2000/svg">
-    <path style="fill:#79122f" d="M0 0h68.03v34.02H0z"/>
-    <path fill="#fff" d="M26.83 27.93V6.4h11.63v3.3h-7.43v5.49h7.06v3.3h-7.06v6.14h7.84v3.3z"/>
-    <path d="M15.37 9.681v5.582h6.625v3.281H15.37v9.261H11.2V6.4h11.101v3.281z" style="font-weight:700;font-size:30.6667px;font-family:TransitWeb-BoldW03-Regular;-inkscape-font-specification:'TransitWeb-BoldW03-Regular, Bold';fill:#fff;stroke-linejoin:bevel;paint-order:stroke fill markers" aria-label="F"/>
-    <path d="m54.995 27.805-4.048-8.126-4.017 8.126h-4.6l6.287-11.346L43.035 6.4h4.876l3.496 7.115L54.873 6.4h4.569l-5.765 10.09 6.194 11.315z" style="font-weight:700;font-size:30.6667px;font-family:TransitWeb-BoldW03-Regular;-inkscape-font-specification:'TransitWeb-BoldW03-Regular, Bold';fill:#fff;stroke-linejoin:bevel;paint-order:stroke fill markers" aria-label="X"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="RV_Nr." data-name="RV Nr." viewBox="0 0 68.03 34.02">
+  <defs>
+    <style>.cls-1{fill:#79122f;}.cls-2{fill:#fff;}</style>
+  </defs>
+  <rect class="cls-1" width="68.03" height="34.02"></rect>
+  <path class="cls-2" d="M16.18,9.87v5.37h6.37V18.4H16.18v8.91h-4V6.71H22.85V9.87Z"></path>
+  <path class="cls-2" d="M26.62,27.31V6.71H37.75V9.87H30.63v5.25h6.76v3.16H30.63v5.87h7.5v3.16Z"></path>
+  <path class="cls-2" d="M52.31,27.31l-3.9-7.82-3.86,7.82H40.12l6.05-10.92L40.8,6.71h4.69l3.37,6.85,3.33-6.85h4.4L51,16.42l6,10.89Z"></path>
 </svg>
