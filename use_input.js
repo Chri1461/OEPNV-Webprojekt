@@ -137,10 +137,10 @@ async function get_stations() {
 
         const data = await resp.json();
         stationsliste = data;
-
+        
         get_last_game();
 
-    } catch (e) {}
+    } catch (e) {alert(e);}
 }
 
 async function get_last_game() {

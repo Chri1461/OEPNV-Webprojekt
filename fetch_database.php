@@ -8,6 +8,8 @@
     // Datenbank Verbindungsaufbau
     include("database-login.php");
     $connection = mysqli_connect($host, $user, $password, $database);
+    mysqli_set_charset($connection, "utf8mb4");
+
     $city = "berlin";
     $selected_transport = [];
     if (!isset($_SESSION["Networks"])) {
@@ -30,7 +32,7 @@
         $result = mysqli_query($connection, $sql);
         $arr = mysqli_fetch_all($result);
     } else {$arr = "ERROR";}
-
+    
     mysqli_close($connection);
     echo json_encode($arr);
 ?>
