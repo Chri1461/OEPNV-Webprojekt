@@ -2,6 +2,7 @@
     function safe_game() {
         include("database-login.php");
         $connection = mysqli_connect($host, $user, $password, $database);
+        mysqli_set_charset($connection, "utf8mb4");
         date_default_timezone_set('Europe/Berlin');
 
         if (!isset($_COOKIE["uid"])) {

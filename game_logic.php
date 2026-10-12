@@ -10,6 +10,8 @@
     // Datenbank Verbindungsaufbau
     include("database-login.php");
     $connection = mysqli_connect($host, $user, $password, $database);
+    mysqli_set_charset($connection, "utf8mb4");
+
     $city = "berlin";
     $selected_transport = [];
     if (!isset($_SESSION["Networks"])) {
