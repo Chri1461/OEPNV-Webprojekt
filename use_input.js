@@ -120,6 +120,7 @@ async function use_input(event, s="") {
     }
 
     out.innerHTML = html_content;
+    input_field.focus();
 }
 
 let stationsliste = [];

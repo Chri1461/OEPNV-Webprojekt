@@ -8,7 +8,7 @@
         if (!isset($_COOKIE["uid"])) {
             $test = json_encode(["Hallo" => 0], JSON_UNESCAPED_UNICODE);
 
-            $date = date("Y-d-m", time());
+            $date = date("Y-m-d", time());
             mysqli_query($connection, "INSERT INTO user VALUES(NULL, '$date', '$test')");
             $uid = mysqli_insert_id($connection);   
 
@@ -51,7 +51,7 @@
             } else {throw new Error("Hmm");}
         }
         
-        $date = date("Y-d-m", time());
+        $date = date("Y-m-d", time());
         $time = date("H:i:s", time());
         $city = "berlin";
         $gamemode = json_encode($_SESSION["Networks"], JSON_UNESCAPED_UNICODE);
