@@ -22,7 +22,6 @@
         $selected_transport[] = "{$i}_{$city}";
     }
 
-    $selected_transport = [];
     if (!isset($_SESSION["States"])) {
         $_SESSION["States"] = ["Brandenburg", "Berlin"];
     }

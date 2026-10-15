@@ -18,6 +18,10 @@
     foreach($_SESSION["Networks"] as $i) {
         $selected_transport[] = "{$i}_{$city}";
     }
+    
+    if (!isset($_SESSION["States"])) {
+        $_SESSION["States"] = ["Brandenburg", "Berlin"];
+    }
 
     $sub_queries = [];
     foreach($selected_transport as $i) {
