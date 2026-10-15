@@ -12,6 +12,7 @@
     $connection = mysqli_connect($host, $user, $password, $database);
     mysqli_set_charset($connection, "utf8mb4");
 
+    // TODO: NEED TO REFACTOR!!!
     $city = "berlin";
     $selected_transport = [];
     if (!isset($_SESSION["Networks"])) {
@@ -21,16 +22,29 @@
         $selected_transport[] = "{$i}_{$city}";
     }
 
+    $selected_transport = [];
+    if (!isset($_SESSION["States"])) {
+        $_SESSION["States"] = ["Brandenburg", "Berlin"];
+    }
+
     $sub_queries = [];
     foreach($selected_transport as $i) {
         $sub_queries[] = "SELECT * FROM $i";
     }
-    $union = implode(" UNION ALL ", $sub_queries);
+    $network_union = implode(" UNION ALL ", $sub_queries);
+
+    $sub_queries = [];
+    foreach($_SESSION["States"] as $i) {
+        $sub_queries[] = "county.state = '$i'";
+    }
+    $where_states = implode(" OR ", $sub_queries);
+    if (!$where_states) {$where_states = "True";}
 
     // Random Ziel-Station generieren oder gespeicherte aus Session-Cookies lesen
     if (!isset($_SESSION["ziel_data"])) {
         $sql = "SELECT Station, GROUP_CONCAT(Linie SEPARATOR ', ') AS Linie, Bezirk, Latitude, Longitude
-                FROM ($union) AS Vereinigung
+                FROM ($network_union) AS Vereinigung, county
+                WHERE county.name = Bezirk AND ($where_states)
                 GROUP BY Station
                 ORDER BY RAND() 
                 LIMIT 1";
@@ -66,8 +80,8 @@
     // Informationen zum Guess abfragen
     $guessed_name = $data_guess["Station"];
     $sql = "SELECT Station, GROUP_CONCAT(Linie SEPARATOR ', ') AS Linie, Bezirk, Latitude, Longitude
-            FROM ($union) AS Vereinigung
-            WHERE Station = '$guessed_name'
+            FROM ($network_union) AS Vereinigung, county
+            WHERE Station = '$guessed_name' AND county.name = Bezirk AND ($where_states)
             GROUP BY Station
             LIMIT 1";
     $result = mysqli_query($connection, $sql);

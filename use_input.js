@@ -9,8 +9,8 @@ const settings = document.getElementById("settings");
 const overlay_container = document.getElementById("overlay_container");
 
 input_field.addEventListener("input", suggest);
-suggest_div.addEventListener("mousedown", use_input);
-next.addEventListener("mousedown", reset_html);
+suggest_div.addEventListener("click", use_input);
+next.addEventListener("click", reset_html);
 settings.addEventListener("click", open_settings);
 overlay_container.addEventListener("click", close_settings);
 
@@ -24,10 +24,11 @@ async function open_settings() {
         });
 
         const data = await resp.json();
-        data.networks.forEach(element => {
-           var checkbox = document.getElementById(element);
-           checkbox.checked = true; 
-        });
+        for (let key in data) {
+            data[key].forEach(element => {
+            var checkbox = document.getElementById(element);
+            checkbox.checked = true; 
+        })};
     } catch (e) {}
 
     overlay_container.style.display = "block"; 
@@ -49,14 +50,7 @@ async function change_settings(event) {
     }
 
     if (event.target.type === "checkbox") {
-        if (event.target.id === "regio") {
-            var sent_body = JSON.stringify({regio: event.target.checked});
-        } else if (event.target.id === "cityline") {
-            var sent_body = JSON.stringify({cityline: event.target.checked});
-        } else if (event.target.id === "underground") {
-            var sent_body = JSON.stringify({underground: event.target.checked});
-        }
-
+        var sent_body = JSON.stringify({setting: event.target.className, [event.target.id]: event.target.checked})
         try {
             const resp = await fetch("change_settings.php", {
                 method: "POST",

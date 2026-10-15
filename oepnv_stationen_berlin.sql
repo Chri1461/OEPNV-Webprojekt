@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 14. Okt 2026 um 16:09
+-- Erstellungszeit: 15. Okt 2026 um 18:53
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -208,6 +208,75 @@ INSERT INTO `cityline_berlin` (`Station`, `Linie`, `Bezirk`, `Latitude`, `Longit
 ('Zepernick', 'S2', 'Barnim', 52.659456208858444, 13.532975116936308),
 ('Zeuthen', 'S46, S8', 'Dahme-Spreewald', 52.349328155485374, 13.62718028622107),
 ('Zoologischer Garten', 'S3, S5, S7, S9', 'Charlottenburg-Wilmersdorf', 52.50705882009206, 13.332313402166372);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `county`
+--
+
+CREATE TABLE `county` (
+  `name` varchar(100) NOT NULL,
+  `short` varchar(10) NOT NULL,
+  `state` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Daten für Tabelle `county`
+--
+
+INSERT INTO `county` (`name`, `short`, `state`) VALUES
+('Barnim', 'BAR', 'Brandenburg'),
+('Bautzen', 'BZ', 'Sachsen'),
+('Brandenburg an der Havel', 'BRB', 'Brandenburg'),
+('Charlottenburg-Wilmersdorf', 'Cha-Wi', 'Berlin'),
+('Chemnitz', 'C', 'Sachsen'),
+('Cottbus', 'CB', 'Brandenburg'),
+('Dahme-Spreewald', 'LDS', 'Brandenburg'),
+('Dessau-Roßlau', 'DE/RSL', 'Sachsen-Anhalt'),
+('Dresden', 'DD', 'Sachsen'),
+('Elbe-Elster', 'EE', 'Brandenburg'),
+('Frankfurt (Oder)', 'FFO', 'Brandenburg'),
+('Friedrichshain-Kreuzberg', 'Fr-Kr', 'Berlin'),
+('Görlitz', 'GR', 'Sachsen'),
+('Havelland', 'HVL', 'Brandenburg'),
+('Jerichower Land', 'JL', 'Sachsen-Anhalt'),
+('Leipzig', 'L', 'Sachsen'),
+('Lichtenberg', 'Licht', 'Berlin'),
+('Ludwigslust-Parchim', 'LUP', 'Mecklenburg-Vorpommern'),
+('Magdeburg', 'MD', 'Sachsen-Anhalt'),
+('Märkisch-Oderland', 'MOL', 'Brandenburg'),
+('Marzahn-Hellersdorf', 'Ma-He', 'Berlin'),
+('Mecklenburgische Seenplatte', 'MSE', 'Mecklenburg-Vorpommern'),
+('Meißen', 'MEI', 'Sachsen'),
+('Mitte', 'Mitte', 'Berlin'),
+('Mittelsachsen', 'LMS', 'Sachsen'),
+('Neukölln', 'Neuk', 'Berlin'),
+('Nordsachsen', 'LNS', 'Sachsen'),
+('Nordwestmecklenburg', 'NWM', 'Mecklenburg-Vorpommern'),
+('Oberhavel', 'OHV', 'Brandenburg'),
+('Oberspreewald-Lausitz', 'OSL', 'Brandenburg'),
+('Oder-Spree', 'LOS', 'Brandenburg'),
+('Ostprignitz-Ruppin', 'OPR', 'Brandenburg'),
+('Pankow', 'Pank', 'Berlin'),
+('Polen', 'PL', 'Polen'),
+('Potsdam', 'P', 'Brandenburg'),
+('Potsdam-Mittelmark', 'PM', 'Brandenburg'),
+('Prignitz', 'PR', 'Brandenburg'),
+('Reinickendorf', 'Rein', 'Berlin'),
+('Rostock', 'HRO', 'Mecklenburg-Vorpommern'),
+('Schwerin', 'SN', 'Mecklenburg-Vorpommern'),
+('Spandau', 'Span', 'Berlin'),
+('Spree-Neiße', 'LSN', 'Brandenburg'),
+('Steglitz-Zehlendorf', 'St-Ze', 'Berlin'),
+('Stendal', 'SDL', 'Sachsen-Anhalt'),
+('Teltow-Fläming', 'TF', 'Brandenburg'),
+('Tempelhof-Schöneberg', 'Te-Sch', 'Berlin'),
+('Treptow-Köpenick', 'Tr-Kö', 'Berlin'),
+('Uckermark', 'UM', 'Brandenburg'),
+('Vorpommern-Greifswald', 'VG', 'Mecklenburg-Vorpommern'),
+('Vorpommern-Rügen', 'VR', 'Mecklenburg-Vorpommern'),
+('Wittenberg', 'WB', 'Sachsen-Anhalt');
 
 -- --------------------------------------------------------
 
@@ -954,6 +1023,12 @@ CREATE TABLE `user` (
 --
 ALTER TABLE `cityline_berlin`
   ADD PRIMARY KEY (`Station`);
+
+--
+-- Indizes für die Tabelle `county`
+--
+ALTER TABLE `county`
+  ADD PRIMARY KEY (`name`);
 
 --
 -- Indizes für die Tabelle `games`
