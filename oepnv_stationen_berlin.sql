@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 15. Okt 2026 um 18:53
+-- Erstellungszeit: 16. Okt 2026 um 17:13
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -66,7 +66,7 @@ INSERT INTO `cityline_berlin` (`Station`, `Linie`, `Bezirk`, `Latitude`, `Longit
 ('Brandenburger Tor', 'S1, S2, S25, S26', 'Mitte', 52.516535469196064, 13.38149646719923),
 ('Buch', 'S2', 'Pankow', 52.636524719590646, 13.492269462274592),
 ('Buckower Chaussee', 'S2', 'Tempelhof-Schöneberg', 52.41089001817408, 13.382566456593171),
-('Bundesplatz', 'S41, S42, S46', 'Bundesplatz', 52.47763569093404, 13.328967223502689),
+('Bundesplatz', 'S41, S42, S46', 'Charlottenburg-Wilmersdorf', 52.47763569093404, 13.328967223502689),
 ('Charlottenburg', 'S3, S5, S7, S9', 'Charlottenburg-Wilmersdorf', 52.50502882529646, 13.302894291954336),
 ('Eichborndamm', 'S25', 'Reinickendorf', 52.57761683282531, 13.316584889396225),
 ('Eichwalde', 'S46, S8', 'Dahme-Spreewald', 52.37170220503396, 13.615218943648578),
