@@ -5,45 +5,26 @@
     $incoming_data = file_get_contents("php://input");
     $data = json_decode($incoming_data, true);
 
-    if (isset($data["Request"])) {
-        if ($data["Request"] == "All") {
-            echo json_encode(["networks" => $_SESSION["Networks"], "states" => $_SESSION["States"]]);
-        }
-    } else {
+    if (isset($data["Request"])) { // Send setting-values
+        echo json_encode(["networks" => $_SESSION["Networks"], "states" => $_SESSION["States"]]);
+        
+    } else { // Change setting-vaules
+        $networks = $_SESSION["Networks"] ?? [];
+        $states = $_SESSION["States"] ?? [];
 
-        if (isset($_SESSION["Networks"])) {
-            $networks = $_SESSION["Networks"];
-        } else {$networks = [];}
+        if ($data) {// data: setting => Changed-Setting, change => [changed_option, changed_to_val ("" / 1)]
 
-        if (isset($_SESSION["States"])) {
-            $states = $_SESSION["States"];
-        } else {$states = [];}
-
-        if ($data) {
-            if ($data["setting"] == "network") {
-                foreach($data as $key => $value) {
-                    if ($value && $key != "setting") {
-                        $networks[] = $key;
-                    } else {$networks = array_values(array_diff($networks, [$key]));}
-                } 
-                $_SESSION["Networks"] = $networks;
-                unset($_SESSION["ziel_data"]);
-                $_SESSION["guessed_stations"] = [];
-                $_SESSION["guess_count"] = 0;
-
-            } else if ($data["setting"] == "state") {
-                if ($data["setting"] == "state") {
-                    foreach($data as $key => $value) {
-                        if ($value && $key != "setting") {
-                            $states[] = $key;
-                        } else {$states = array_values(array_diff($states, [$key]));}
-                    } 
-                    $_SESSION["States"] = $states;
-                    unset($_SESSION["ziel_data"]);
-                    $_SESSION["guessed_stations"] = [];
-                    $_SESSION["guess_count"] = 0;
-                }
+            $mode = ["Networks" => $networks, "States" => $states];
+            if ($data["change"][1]) {// Checked
+                $mode[$data["setting"]][] = $data["change"][0];
+            } else { // Unchecked
+                $mode[$data["setting"]] = array_values(array_diff($mode[$data["setting"]], [$data["change"][0]]));
             }
+
+            $_SESSION[$data["setting"]] = $mode[$data["setting"]];
+            unset($_SESSION["ziel_data"]);
+            $_SESSION["guessed_stations"] = [];
+            $_SESSION["guess_count"] = 0;
         }
     }
 ?>

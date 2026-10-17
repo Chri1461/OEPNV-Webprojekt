@@ -50,7 +50,7 @@ async function change_settings(event) {
     }
 
     if (event.target.type === "checkbox") {
-        var sent_body = JSON.stringify({setting: event.target.className, [event.target.id]: event.target.checked})
+        var sent_body = JSON.stringify({setting: event.target.className, change: [event.target.id, event.target.checked]})
         try {
             const resp = await fetch("change_settings.php", {
                 method: "POST",
