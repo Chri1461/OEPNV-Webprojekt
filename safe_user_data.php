@@ -6,12 +6,13 @@
         date_default_timezone_set('Europe/Berlin');
 
         if (!isset($_COOKIE["uid"])) {
-            $test = json_encode(["Hallo" => 0], JSON_UNESCAPED_UNICODE);
+            $guessed_station_count = json_encode([$_SESSION["guessed_stations"][0] => 0], JSON_UNESCAPED_UNICODE);
 
             $date = date("Y-m-d", time());
-            mysqli_query($connection, "INSERT INTO user VALUES(NULL, '$date', '$test')");
+            mysqli_query($connection, "INSERT INTO user VALUES(NULL, '$date', '$guessed_station_count')");
             $uid = mysqli_insert_id($connection);   
 
+            // Cookie verschlüsseln
             $key = hex2bin($encryption_key);
             $jsonPayload = json_encode($uid);
             $ivLength = openssl_get_cipher_methods(true) ? openssl_cipher_iv_length('aes-256-gcm') : 12;
@@ -19,7 +20,7 @@
             $ciphertext = openssl_encrypt($jsonPayload, 'aes-256-gcm', $key, 1, $iv, $tag);
             $val = base64_encode($iv . $tag . $ciphertext);
 
-            setcookie("uid", $val, time() + (86400 * 365), "/");
+            setcookie("uid", $val, time() + (86400 * 7), "/");
 
         } else {
             $key = hex2bin($encryption_key);
@@ -27,7 +28,7 @@
 
             if (isset($_COOKIE["uid"])) {
                 $decodedData = base64_decode($_COOKIE['uid'], true);
-                
+                // Cookie entschlüsseln
                 if ($decodedData !== false) {
                     $ivLength = 12;
                     $tagLength = 16;
@@ -48,9 +49,9 @@
 
             if ($decryptedData) {
                 $uid = $decryptedData;
-            } else {throw new Error("Hmm");}
+            } else {throw new Error("Cookie konnte nicht entschlüsselt werden");}
         }
-        
+
         $date = date("Y-m-d", time());
         $time = date("H:i:s", time());
         $city = "berlin";
@@ -60,6 +61,19 @@
 
         $sql = "INSERT INTO games
                 VALUES(NULL, $uid, '$date', '$time', '$city', '$gamemode', '$guesses', $guess_count)";
+        mysqli_query($connection, $sql);
+
+        $appends = [];
+        foreach ($_SESSION["guessed_stations"] as $station) {
+            $json_path = "'$.\"" . $station . "\"'";
+            $appends[] = $json_path;
+            $appends[] = "IFNULL(JSON_UNQUOTE(JSON_EXTRACT(gsc, $json_path)), 0) + 1";
+        }
+        $json_update = implode(", ", $appends);
+
+        $sql = "UPDATE user 
+                SET gsc = JSON_SET(COALESCE(gsc, '{}'), $json_update)
+                WHERE uid = $uid";
         mysqli_query($connection, $sql);
 
         mysqli_close($connection);
