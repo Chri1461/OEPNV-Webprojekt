@@ -1,14 +1,12 @@
 <?php
-    function safe_game() {
+    function cookie_handler() {
         include("database-login.php");
         $connection = mysqli_connect($host, $user, $password, $database);
         mysqli_set_charset($connection, "utf8mb4");
-        date_default_timezone_set('Europe/Berlin');
 
         if (!isset($_COOKIE["uid"])) {
-            $guessed_station_count = json_encode([$_SESSION["guessed_stations"][0] => 0], JSON_UNESCAPED_UNICODE);
+            $guessed_station_count = json_encode([$_SESSION["guessed_stations"][0] ??= "Hauptbahnhof" => 0], JSON_UNESCAPED_UNICODE);
 
-            $date = date("Y-m-d", time());
             mysqli_query($connection, "INSERT INTO user VALUES(NULL, '$date', '$guessed_station_count')");
             $uid = mysqli_insert_id($connection);   
 
@@ -51,10 +49,21 @@
                 $uid = $decryptedData;
             } else {throw new Error("Cookie konnte nicht entschlüsselt werden");}
         }
+        return $uid ?? NULL;
+    }
 
+    function safe_game() {
+        include("database-login.php");
+        $connection = mysqli_connect($host, $user, $password, $database);
+        mysqli_set_charset($connection, "utf8mb4");
+
+        date_default_timezone_set('Europe/Berlin');
         $date = date("Y-m-d", time());
         $time = date("H:i:s", time());
         $city = "berlin";
+
+        $uid = cookie_handler();
+
         $gamemode = json_encode($_SESSION["Networks"], JSON_UNESCAPED_UNICODE);
         $guesses = json_encode($_SESSION["guessed_stations"], JSON_UNESCAPED_UNICODE);
         $guess_count = $_SESSION["guess_count"];
